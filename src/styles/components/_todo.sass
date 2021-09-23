@@ -1,0 +1,42 @@
+.todos__item
+    background-color: var(--item-bg)
+    padding: 1.5rem 2rem
+
+    @include flexAlignment(center, space-between)
+
+    &:nth-of-type(1)
+      border-top-left-radius: 5px
+      border-top-right-radius: 5px
+
+    &:not(&:nth-of-type(1))
+      border-top: 1px solid var(--border-color)
+
+    &-task
+      font-size: 1.3rem
+      letter-spacing: -0.17px
+      color: var(--task-color)
+      position: relative
+      cursor: pointer
+
+      &::before
+        content: ""
+        position: absolute
+        top: 50%
+        left: 0
+        transform: translateY(-50%)
+        height: 1px
+        background-color: var(--border-color)
+        width: 0
+        transition: width .5s ease-in
+
+    &-circle
+      @include checkCircle(20px, 1.25rem)
+      @include flexAlignment(center, center)
+
+    &-check
+      width: 8px
+      display: none
+
+    &-del
+      width: 12px
+      cursor: pointer

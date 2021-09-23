@@ -1,0 +1,22 @@
+.filter-options
+  background-color: var(--item-bg)
+  box-shadow: 0 35px 50px -15px var(--shadow)
+  padding: 1.5rem 2rem
+  margin-top: 1.5rem
+  border-radius: 5px
+
+  &__list
+    @include flexAlignment(center, space-around)
+
+  &__item
+    list-style: none
+
+  &__link
+    font-weight: 700
+    font-size: 1.4rem
+    line-height: -0.19px  
+    text-decoration: none
+    text-transform: capitalize
+
+    &:hover
+      color: var(--text-hover)

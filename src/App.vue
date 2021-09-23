@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header />
+  <AddTodoBar />
+  <Todos />
+  <FilterTodosBar />
+  <footer class="footer">
+    <span class="footer__info">Drag and drop to reorder list</span>
+  </footer>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Header from "@/components/Header"
+  import AddTodoBar from "@/components/AddTodoBar"
+  import Todos from "@/components/Todos"
+  import FilterTodosBar from "@/components/FilterTodosBar"
+  import { provide } from "vue"
+  import store from "@/store"
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    components: {
+      Header,
+      AddTodoBar,
+      Todos,
+      FilterTodosBar
+    },
+    setup() {
+      provide("store", store)
+      
+      return { store }
+    }
   }
-}
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  @import "@/App.sass"
+
 </style>

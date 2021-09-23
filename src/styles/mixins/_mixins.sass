@@ -1,0 +1,11 @@
+@mixin flexAlignment($y, $x)
+  display: flex
+  align-items: $y
+  justify-content: $x
+
+@mixin checkCircle($size, $rMargin)
+  width: $size
+  height: $size
+  border-radius: 50%
+  border: 1.5px solid var(--border-color)
+  margin-right: $rMargin

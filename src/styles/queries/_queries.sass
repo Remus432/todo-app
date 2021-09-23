@@ -1,0 +1,59 @@
+@media (min-width: 1440px)
+  #app
+    width: 600px
+    margin: auto
+
+  body
+    background-image: linear-gradient(to bottom, transparent 35%, var(--body-bg) 0%), url("/images/bg-desktop-light.jpg")
+    background-size: 100%
+    padding-top: 8rem
+
+  body.dark-theme
+    background-image: linear-gradient(to bottom, transparent 35%, var(--body-bg) 0%), url("/images/bg-desktop-dark.jpg")
+
+  .header
+    &__logo
+      font-size: 4rem
+
+  .search-bar
+    padding: 2.5rem 2rem
+
+    &__circle
+      @include checkCircle(24px, 2rem)
+
+    &__input
+      font-size: 1.8rem
+
+  .todos
+    margin-top: 2.5rem
+
+    &__item,
+    &__info
+      padding: 2.5rem 2rem
+      
+    &__count,
+    &__del
+      font-size: 1.4rem
+
+    &__item
+      &-task
+        font-size: 1.8rem
+
+      &-del
+        width: 18px
+
+      &-circle
+        @include checkCircle(24px, 2rem)
+
+  .filter-options
+    padding: 2.5rem 2rem
+    display: none
+
+  .lg-layout
+    display: flex
+    box-shadow: none
+    padding: 0
+    margin: 0
+
+    & li
+      margin: 0 1rem

@@ -1,0 +1,26 @@
+.search-bar
+  width: 100%
+  background-color: var(--item-bg)
+  border-radius: 5px
+  margin-top: 4rem
+  padding: 1.5rem 2rem
+
+  @include flexAlignment(center, stretch)
+
+  &__circle
+    @include checkCircle(20px, 1.25rem)
+
+  &__input
+    border: none
+    background: none
+    font-size: 1.2rem
+    color: var(--input-color)
+    font-family: inherit
+    font-weight: 400
+    letter-spacing: -0.25px
+    width: 100%
+
+    &::placeholder
+      color: #9495A5
+      letter-spacing: -0.17px
+     

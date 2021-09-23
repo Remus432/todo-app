@@ -1,0 +1,29 @@
+.todos
+  box-shadow: 0 35px 50px -15px var(--shadow)
+  border-bottom-left-radius: 5px
+  border-bottom-right-radius: 5px
+  margin-top: 1.2rem
+
+  &__info
+    @include flexAlignment(center, space-between)
+
+    padding: 1.5rem 2rem
+    border-top: 1px solid var(--border-color)
+    background-color: var(--item-bg)
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+
+  &__count
+    color: #9495A5
+    font-size: 1.2rem
+
+  &__del
+    background: none
+    border: none
+    color: #9495A5
+    font-size: 1.2rem
+    cursor: pointer
+
+    &:hover
+      color: var(--text-hover)
+  

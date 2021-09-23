@@ -1,0 +1,80 @@
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+*:focus
+  outline: none
+
+:root
+  --link-color: #3A7CFD
+  --check-bg: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+  --body-bg: #FAFAFA
+  --border-color: #E3E4F1
+  --task-completed: #D1D2DA
+  --task-color: #494C6B
+  --text: #9495A5
+  --item-bg: #fff
+  --shadow: #C2C3D650
+  --input-color: #393A4B
+  --text-hover: #494C6B
+
+:root.dark-theme
+  --body-bg: #171823
+  --border-color: #393A4B
+  --task-completed: #4D5067
+  --task-color: #C8CBE7
+  --text: #5B5E7E
+  --item-bg: #25273D
+  --shadow: #00000050
+  --input-color: #C8CBE7
+  --text-hover: #E3E4F1
+
+html
+  font-size: 62.5%
+
+body
+  background-image: linear-gradient(to bottom, transparent 30%, var(--body-bg) 0%), url("/images/bg-mobile-light.jpg")
+  background-size: 100%
+  background-repeat: no-repeat
+  height: 100vh
+  font-size: 1.8rem
+  font-family: 'Josefin Sans', sans-serif
+  padding: 2rem 
+  padding-top: 4rem
+  position: relative
+  z-index: 1
+  animation: fadeIn .5s ease-in forwards
+
+body.dark-theme
+  background-image: linear-gradient(to bottom, transparent 30%, var(--body-bg) 0%), url("/images/bg-mobile-dark.jpg")
+
+p
+  line-height: -0.17px
+
+span
+  line-height: -0.19px
+
+a
+  color: #9495A5
+
+.wrapper
+  @include flexAlignment(center, default)
+
+.active
+  color: #3A7CFD
+
+.completed
+  background-image: var(--check-bg)
+
+  & img
+    display: inline-block
+
+  & ~ h2
+    color: var(--task-completed)
+
+    &::before
+      width: 100%
+
+.lg-layout
+  display: none
