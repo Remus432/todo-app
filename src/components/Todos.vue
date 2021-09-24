@@ -1,7 +1,7 @@
 <template>
   <main class="todos">
-    <div class="todos__container">
-      <DraggableList :todos="store.getters.getFilteredTodos()" />
+    <div class="todos__container hide">
+      <DraggableList ref="todos" :todos="store.getters.getFilteredTodos()" />
     </div>
     <div class="todos__info">
       <p class="todos__count">{{store.state.todos.length}} items left</p>

@@ -5,7 +5,8 @@ import HttpReq from "../httpReq"
 const state = reactive({
   todos: [],
   currTheme: "light",
-  selectedFilter: "all"
+  selectedFilter: "all",
+  loadingTime: 0
 })
 
 const methods = {
@@ -16,12 +17,13 @@ const methods = {
     const postTodoReq = new HttpReq("POST", "/add-todo", { text: todoText.value, isCompleted: false })
 
     state.todos = [...state.todos, await postTodoReq.fetchReq()]
-
+    
     todoText.value = "";
   },
   async getTodos() {
     const getTodosReq = new HttpReq("GET", "/todos")
-    state.todos = await getTodosReq.fetchReq()
+    const todos = await getTodosReq.fetchReq()
+    state.todos = todos
   },
   async toggleTodoCompletion(e) {
     let todoId = undefined
@@ -54,6 +56,9 @@ const getters = {
   getFilteredTodos() {
     const filteredTodos = state.todos.filter(todo => filterTodos(todo, state.selectedFilter))
     return filteredTodos
+  },
+  getLoadingTime() {
+    return state.loadingTime
   }
 }
 

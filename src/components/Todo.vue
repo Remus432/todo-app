@@ -1,5 +1,5 @@
 <template>
-  <div class="todos__item" :id="_id">
+  <div ref="todos" class="todos__item" :id="_id">
     <div class="wrapper">
       <div @click="store.methods.toggleTodoCompletion" :class="`todos__item-circle ${isCompleted ? 'completed' : ''}`">
         <img src="/images/icon-check.svg" alt="Checked Icon" class="todos__item-check">
@@ -12,7 +12,8 @@
 
 
 <script>
-  import { inject } from "vue"
+  import { inject, ref, onMounted } from "vue"
+  import { gsap } from "gsap"
 
   export default {
     name: "Todo",
@@ -23,7 +24,11 @@
     },
     setup() {
       const store = inject("store")
-      return { store }
+      const todos = ref(null)
+
+
+
+      return { store, todos }
     }
   }
 </script>
