@@ -4,6 +4,7 @@ export default class HttpReq {
     this.endpoint = "https://backend-app-todo.herokuapp.com"
     this.settings = {
       method: reqMethod,
+      "mode": "no-cors",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
