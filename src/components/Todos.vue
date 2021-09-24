@@ -5,7 +5,7 @@
     </div>
     <div class="todos__info">
       <p class="todos__count">{{store.state.todos.length}} items left</p>
-      <FilterTodosBar :isLargeScreen="getScreenSize()" />
+        <FilterTodosBar class="large-screen" v-if="getScreenSize()" />
       <button @click="store.methods.clearCompletedTodos" class="todos__del">Clear Completed</button>
     </div>
   </main>
@@ -26,7 +26,7 @@
     },
     methods: {
       getScreenSize() {
-        return window.innerWidth >= 1440 ? true : false
+        return window.innerWidth >= 1000 
       }
     },
     setup() {

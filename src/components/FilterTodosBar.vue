@@ -1,5 +1,5 @@
 <template>
-  <nav :class="`filter-options ${isLargeScreen ? 'lg-layout' : ''}`">
+  <nav class="filter-options">
     <ul class="filter-options__list">
       <FilterLink :key="index" v-for="option, index in ['all', 'active', 'completed']" :option="option" />
     </ul>
@@ -15,7 +15,7 @@
       FilterLink
     },
     props: {
-      isLargeScreen: Boolean
+      screenSize: String
     }
   }
 </script>

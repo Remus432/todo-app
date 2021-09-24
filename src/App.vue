@@ -2,7 +2,7 @@
   <Header />
   <AddTodoBar />
   <Todos />
-  <FilterTodosBar />
+  <FilterTodosBar v-if="getScreenSize()" />
   <footer class="footer">
     <span class="footer__info">Drag and drop to reorder list</span>
   </footer>
@@ -24,9 +24,14 @@
       Todos,
       FilterTodosBar
     },
+    methods: {
+      getScreenSize() {
+        return window.innerWidth <= 1000 
+      }
+    },
     setup() {
       provide("store", store)
-      
+  
       return { store }
     }
   }
