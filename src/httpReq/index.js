@@ -6,7 +6,8 @@ export default class HttpReq {
       method: reqMethod,
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       ...(reqMethod !== "GET" && { body: JSON.stringify(data) })
     }
