@@ -1,5 +1,6 @@
 import { reactive } from "vue"
-import { postTodo, fetchTodos, updateTodoCompletion, postTodos, filterTodos, deleteCompletedTodos, clearTodoFetch } from "../utilities"
+import {  filterTodos } from "../utilities"
+import HttpReq from "../httpReq"
 
 const state = reactive({
   todos: [],
@@ -12,31 +13,37 @@ const methods = {
     e.preventDefault();
 
     const todoText = e.target.elements.task;
-    postTodo(todoText.value).then(res => state.todos = [...state.todos, res])
+    const postTodoReq = new HttpReq("POST", "/add-todo", { text: todoText.value, isCompleted: false })
+
+    state.todos = [...state.todos, await postTodoReq.fetchReq()]
 
     todoText.value = "";
   },
-  getTodos() {
-    fetchTodos().then(todos => state.todos = [...todos])
+  async getTodos() {
+    const getTodosReq = new HttpReq("GET", "/todos")
+    state.todos = await getTodosReq.fetchReq()
   },
-  toggleTodoCompletion(e) {
+  async toggleTodoCompletion(e) {
     let todoId = undefined
 
     if (e.target.classList.contains("todos__item-circle")) todoId = e.target.parentElement.parentElement.id
     if (e.target.classList.contains("todos__item-check")) todoId = e.target.parentElement.parentElement.parentElement.id
     
-    postTodos(todoId, state.todos.filter(todo => todo._id === todoId))
+    const putTodosReq = new HttpReq("PUT", "/update-todos", {id: todoId, todo: state.todos.filter(todo => todo._id === todoId) })
+    const updatedTodos = await putTodosReq.fetchReq() 
 
-    state.todos = state.todos.map(todo => updateTodoCompletion(todo, todoId))
+    state.todos = updatedTodos
   },
-  clearCompletedTodos() {
-    deleteCompletedTodos()
-      .then(res => state.todos = res)
-      .catch(err => console.log(err))
+  async clearCompletedTodos() {
+    const deleteTodosReq = new HttpReq("DELETE", "/delete-todos")
+    const todos = await deleteTodosReq.fetchReq()
+    state.todos = todos
   },
-  clearTodo(e) {
+  async clearTodo(e) {
     const id = e.target.parentElement.id
-    clearTodoFetch(id).then(res => state.todos = res)
+    const deleteTodoReq = new HttpReq("DELETE", "/delete-todo", { id })
+    
+    state.todos = await deleteTodoReq.fetchReq()
   },
   switchFilter(e) {
     state.selectedFilter = e.target.dataset.filter

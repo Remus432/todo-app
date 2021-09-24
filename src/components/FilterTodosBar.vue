@@ -16,9 +16,6 @@
     },
     props: {
       isLargeScreen: Boolean
-    },
-    setup(props) {
-      console.log(props.isLargeScreen)
     }
   }
 </script>

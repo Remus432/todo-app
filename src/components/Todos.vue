@@ -1,11 +1,7 @@
 <template>
   <main class="todos">
     <div class="todos__container">
-      <draggable v-model="store.state.todos" group="todos" item-key="_id">
-        <template #item="{element, index}">
-          <Todo :key="index" :id="element._id" :text="element.text" :isCompleted="element.isCompleted"  />
-        </template>
-      </draggable>
+      <DraggableList :todos="store.getters.getFilteredTodos()" />
     </div>
     <div class="todos__info">
       <p class="todos__count">{{store.state.todos.length}} items left</p>
@@ -19,14 +15,14 @@
   import { inject } from "vue"
   import Todo from "./Todo"
   import FilterTodosBar from "./FilterTodosBar"
-  import draggable from "vuedraggable"
+  import DraggableList from "./DraggableList.vue"
 
   export default {
     name: "Todos",
     components: {
       Todo,
       FilterTodosBar,
-      draggable
+      DraggableList
     },
     methods: {
       getScreenSize() {
@@ -36,6 +32,7 @@
     setup() {
       const store = inject("store")
       store.methods.getTodos()
+
       return { store }
     }
   }
