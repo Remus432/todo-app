@@ -1,7 +1,7 @@
 export default class HttpReq {
   constructor(reqMethod, route = "/", data = {}) {
     this.route = route
-    this.endpoint = "https://backend-app-todo.herokuapp.com"
+    this.endpoint = "https://back-end-todo.herokuapp.com"
     this.settings = {
       method: reqMethod,
       headers: {
